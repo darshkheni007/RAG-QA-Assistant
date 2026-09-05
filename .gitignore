@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+ocr_env/
+venv/
+env/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local config (create from .env.example)
+.env
+config.local.json
+
+# N8N workflows with credentials (use templates instead)
+# Knowledge_Assistant.json
+# A_File_Router_Workflow.json

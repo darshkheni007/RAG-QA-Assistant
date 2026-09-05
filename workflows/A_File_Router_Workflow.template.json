@@ -1,0 +1,1834 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "{{GOOGLE_DRIVE_FOLDER_ID}}",
+          "mode": "list",
+          "cachedResultName": "N8n",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/{{GOOGLE_DRIVE_FOLDER_ID}}"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        32
+      ],
+      "id": "cb193199-c140-4bf8-9379-81589e26a7ea",
+      "name": "Google Drive Trigger",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "{{GOOGLE_DRIVE_CREDENTIAL_ID}}",
+          "name": "Google Drive account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "{{GOOGLE_DRIVE_FILE_ID}}",
+          "mode": "list",
+          "cachedResultName": "Public-Speaking-Presentation-Skills.pdf",
+          "cachedResultUrl": "https://drive.google.com/file/d/{{GOOGLE_DRIVE_FILE_ID}}/view?usp=drivesdk"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -80,
+        32
+      ],
+      "id": "f17dc7f7-1321-455d-a9b0-70a51f0aee79",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "{{GOOGLE_DRIVE_CREDENTIAL_ID}}",
+          "name": "Google Drive account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "2fef7723-1ec1-4f5c-a4be-df33c94ee4a8",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "jpg",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IMAGE_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "4e4c0f72-8b65-4810-8ceb-9357b0450b65",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "png",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IMAGE_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "91a67039-8aaf-494d-8a17-4417ab2a67c8",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "jpeg",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IMAGE_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "46df0cf9-d29f-4125-acd8-af9f3884dcf3",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "webp",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IMAGE_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "bd4ea919-fdb9-431a-aa91-9096a79707b1",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "bmp",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IMAGE_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "3e17c094-fee4-4130-8fba-ecc40794da9a",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "gif",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IMAGE_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "4ba58411-305f-4d0d-a2e8-63660fc27681",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "pdf",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "b7a9dab4-1815-4207-bf8a-66612165ce6f",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "txt",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "fb72ced1-94a4-4624-8458-5e44c63ce816",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "csv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8c5f3fbf-ec7a-4d4a-8db5-244adeac9c7a",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "json",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "a4e65b12-66ac-4e3e-a06d-7663d8947a3a",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "xml",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "89dc054d-5682-401c-bf92-3a894f52e8e0",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "md",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "5bc55c3b-33c4-4405-bebe-682d7379ee03",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "docx",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "b6115727-c0c9-4428-96b8-ab464e7fb199",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "doc",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "33c92de9-8249-4e49-9106-247a3e165bb3",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "c",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "2afbc108-e5d4-4ea6-9a82-05b3c80a5b0a",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "cpp",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "fe5c22f7-dd4d-4d6d-8770-6b82ee00df53",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "py",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "02e47ac4-dfec-47af-8688-7d2e548c89cc",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "js",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "54ac84a4-9471-4e50-825b-1e58ae5f3504",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "xlsx",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "5fb78e52-b96d-4eb7-9613-c1a5d6b0aedb",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "java",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "51525984-bebb-46fa-ba0d-ac24dd06c44b",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "zip",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "UNKNOWN_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "ac67445f-8e07-4560-af3b-a44d364d8828",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "rar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "UNKNOWN_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "437eedae-d9df-4e83-b706-35334d62ba97",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "exe",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "UNKNOWN_FILES"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "87a708ac-c639-4664-bdc2-1f9037aef3ca",
+                    "leftValue": "={{$binary.data.fileExtension }}",
+                    "rightValue": "apk",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "UNKNOWN_FILES"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        336,
+        -464
+      ],
+      "id": "5f0d373c-89f9-48c2-8cd1-1e8e3addc2f9",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2dc03272-cc25-4b5c-81ca-aa640689fd77",
+              "name": "status",
+              "value": "image_file",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        -400
+      ],
+      "id": "a9252b19-632f-4bc6-a257-979fdad71072",
+      "name": "For Image"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f843899e-2a36-4af0-ab69-38f29149246c",
+              "name": "status",
+              "value": "unknown_file",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        688,
+        224
+      ],
+      "id": "3fa26676-d477-43d8-aee6-ed6484a495f6",
+      "name": "for unknown"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        -80
+      ],
+      "id": "eb855a2a-c8ac-4707-b9f4-e7bea8efd1ba",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "rag",
+          "mode": "list",
+          "cachedResultName": "rag"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        2944,
+        -288
+      ],
+      "id": "dcbf3ff5-35e8-46bf-8294-637e6d6760c6",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "{{PINECONE_CREDENTIAL_ID}}",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "nomic-embed-text:latest"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [
+        2864,
+        48
+      ],
+      "id": "c0a51abc-8230-4c13-86fe-1ff21187821b",
+      "name": "Embeddings Ollama",
+      "credentials": {
+        "ollamaApi": {
+          "id": "{{OLLAMA_CREDENTIAL_ID}}",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.pageContent }}",
+        "textSplittingMode": "custom",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "metadata",
+                "value": "={{ $json.metadata }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        3072,
+        -16
+      ],
+      "id": "4d0bd673-6ffd-40b1-92b8-822b17b4afcf",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "chunkOverlap": 200,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        3040,
+        224
+      ],
+      "id": "39a5593c-357e-4f45-af43-5f173afa342d",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1984,
+        80
+      ],
+      "id": "21a73cc5-0d9b-4e9c-9ec6-938e1347aff4",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "{{OCR_API_URL}}/ocr",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        736,
+        -416
+      ],
+      "id": "68713829-c621-45d8-8c6c-fafa5b67e9e0",
+      "name": "HTTP Request",
+      "retryOnFail": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n\nconst ocr = item.json.body;\n\nreturn {\n\njson: {\n\ntext: ocr.text,\n\nmetadata: {\n\nfilename: ocr.filename,\n\nfile_type: ocr.type,\n\nocr: true,\n\nocr_engine: \"easyocr\",\n\nconfidence: ocr.confidence,\n\nblocks: ocr.blocks,\n\nprocessed_at:\nnew Date().toISOString()\n\n}\n\n}\n\n};\n\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        944,
+        -416
+      ],
+      "id": "0ef81ca5-ed1c-42ad-bb9d-ecbccb3290bd",
+      "name": "OCR Cleaner"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n\nconst doc = item.json;\n\nreturn {\n\njson: {\n\ntext: doc.text,\n\nmetadata: {\n\nfilename:\ndoc.metadata.filename,\n\nsource:\n\"google_drive\",\n\ntype:\ndoc.metadata.file_type,\n\nocr:\ndoc.metadata.ocr,\n\nocr_engine:\ndoc.metadata.ocr_engine,\n\nconfidence:\ndoc.metadata.confidence,\n\nblocks:\ndoc.metadata.blocks,\n\nuploaded_at:\nnew Date().toISOString(),\n\ndocument_category:\n\"image\",\n\nstatus:\n\"processed\"\n\n}\n\n}\n\n};\n\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1152,
+        -416
+      ],
+      "id": "c26b85ba-0f04-4608-aded-50f4ec883371",
+      "name": "Metadata Builder1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n\nitem.json.metadata.status =\n\"low_confidence\";\n\nitem.json.metadata.warning =\n\"OCR confidence below threshold\";\n\nreturn item;\n\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1568,
+        -320
+      ],
+      "id": "501bca60-da71-4fa8-8268-9d7acfb2871c",
+      "name": "LOW QUALITY OCR"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "3cc82c3d-71d7-4f85-b9b4-091ee74fd651",
+              "leftValue": "={{ $json.metadata.confidence }}",
+              "rightValue": 0.6,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1360,
+        -416
+      ],
+      "id": "0b7c24a2-19bf-4f4c-95da-202fa7660ff3",
+      "name": "Confidence Check"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1744,
+        -416
+      ],
+      "id": "7233f093-13a0-4c13-ba0b-3bb80c8a07ce",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c574499d-b29c-465b-b16e-fd97f2f5af60",
+              "leftValue": "={{ $json.text.length }}",
+              "rightValue": 50,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1952,
+        -416
+      ],
+      "id": "891c8224-0edf-4b89-b549-36909d27e0fc",
+      "name": "Text Length Check"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n\nitem.json.metadata.status =\n\"empty_document\";\n\nitem.json.metadata.warning =\n\"No meaningful text extracted\";\n\nreturn item;\n\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2160,
+        -320
+      ],
+      "id": "ea7a5365-8938-49c4-bb9e-abe34cabc994",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2368,
+        -416
+      ],
+      "id": "35626316-6b0c-441b-b0de-90efb3e6a3f1",
+      "name": "OCR Final Output"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n\nreturn {\n\njson: {\n\npageContent: item.json.text,\n\nmetadata: item.json.metadata\n\n}\n\n};\n\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2576,
+        -416
+      ],
+      "id": "aa8a51cb-fee4-448d-b7aa-41c8cb3546c2",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $json.text || \"\";\n\nreturn [{\njson:{\n...$json,\n\ntext_length:text.length,\n\nscanned_pdf:text.length<100\n}\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1008,
+        -80
+      ],
+      "id": "e8231b7e-245b-4a37-95d6-32d9cecdd2f2",
+      "name": "PDF Text Check"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.scanned_pdf }}",
+                    "rightValue": true,
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "equals"
+                    },
+                    "id": "e2457ea2-dfbe-4174-aa84-37c7aa19b2f8"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SCANNED_PDF"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "ac943b0e-f319-4a1a-9bbf-55d7733cd725",
+                    "leftValue": "={{ $json.scanned_pdf }}",
+                    "rightValue": false,
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "NORMAL_PDF"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1216,
+        -80
+      ],
+      "id": "cb3cf3af-eab9-4c2d-ac33-b7a8c2021a1f",
+      "name": "PDF Router"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n\njson:{\n\ntext:\n\n$json.text || \"\",\n\nmetadata:{\n\nfilename:\n\n$json.filename ||\n\n\"unknown.pdf\",\n\nextension:\n\n$json.extension ||\n\n\"pdf\",\n\ndocument_type:\n\n\"digital_pdf\",\n\nocr:false,\n\npages:\n\n$json.numpages ||\n\n0,\n\nconfidence:1,\n\nsource:\"Google Drive\",\n\ncreated_at:\n\nnew Date().toISOString()\n\n}\n\n}\n\n}]"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1712,
+        16
+      ],
+      "id": "f75d4eda-0cb6-4f5c-b67c-e44ac1d52723",
+      "name": "Metadata Builder - PDF"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "{{OCR_API_URL}}/pdf_fast_ocr",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1648,
+        -160
+      ],
+      "id": "90c43885-9de6-42ee-a5d9-f272c5375c25",
+      "name": "OCR API"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n\njson:{\n\ntext:\n\n$json.body.text ||\n\n\"\",\n\nmetadata:{\n\nfilename:\n\n$json.filename ||\n\n\"unknown.pdf\",\n\nextension:\n\n$json.extension ||\n\n\"pdf\",\n\ndocument_type:\n\n$json.body.document_type ||\n\n\"scanned_pdf\",\n\nocr:true,\n\npages:\n\n$json.body.pages ||\n\n0,\n\nconfidence:\n\n$json.body.confidence ||\n\n0,\n\nprocessing_time:\n\n$json.body.processing_time ||\n\n0,\n\nsource:\n\n\"Google Drive\",\n\ncreated_at:\n\nnew Date()\n\n.toISOString()\n\n}\n\n}\n\n}]"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1824,
+        -160
+      ],
+      "id": "a7131a7f-6cc0-44b3-9fb8-27451272665d",
+      "name": "Metadata Builder OCR"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1440,
+        -160
+      ],
+      "id": "d71433a2-5762-4592-a0e6-59cf2e3df65e",
+      "name": "OCR INPUT MERGE"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6e577d7c-3547-483b-8e47-16e000d3d7f3",
+              "name": "file_name",
+              "value": "={{$binary.data.fileName }}",
+              "type": "string"
+            },
+            {
+              "id": "f2bf1b8f-190e-4720-9028-e7b300a528a2",
+              "name": "file_extension",
+              "value": "={{$binary.data.fileExtension }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1264,
+        208
+      ],
+      "id": "df8a79ae-b897-4ff3-885a-71363c33ddfd",
+      "name": "Preserve Metadata"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2032,
+        -160
+      ],
+      "id": "51bc10b5-f688-45d9-85b1-f729035d1090",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first();\n\nitem.json.metadata.filename =\n    item.json.file_name ||\n    item.json.metadata.filename;\n\nitem.json.metadata.extension =\n    item.json.file_extension ||\n    item.json.metadata.extension;\n\ndelete item.json.file_name;\ndelete item.json.file_extension;\n\nreturn [item];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2240,
+        -160
+      ],
+      "id": "dfeabf9b-f798-41f9-8d61-85c8c096c973",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first();\n\nreturn [{\n  json: {\n\n    text: item.json.text || \"\",\n\n    metadata: {\n\n      filename:\n        item.json.file_name ||\n        item.json.name ||\n        \"unknown.pdf\",\n\n      extension:\n        item.json.file_extension ||\n        \"pdf\",\n\n      document_type:\n        \"digital_pdf\",\n\n      ocr:\n        false,\n\n      pages:\n        item.json.numpages ||\n        item.json.pages ||\n        0,\n\n      confidence:\n        1,\n\n      processing_time:\n        0,\n\n      source:\n        \"Google Drive\",\n\n      created_at:\n        new Date().toISOString()\n\n    }\n\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2208,
+        80
+      ],
+      "id": "c17be2c1-3957-4f46-8152-50afeb1de622",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2416,
+        -32
+      ],
+      "id": "8c01faa9-80a3-48ff-a5fe-9ad37767b22c",
+      "name": "Merge3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first();\n\nlet text = item.json.text || \"\";\n\n/* normalize whitespace */\ntext = text.replace(/\\s+/g, \" \");\n\n/* remove weird repeated chars */\ntext = text.replace(\n  /([A-Za-z])\\1{5,}/g,\n  \"$1\"\n);\n\ntext = text.trim();\n\n/* pageContent */\nitem.json.pageContent = text;\n\ndelete item.json.text;\n\n/* active document */\nitem.json.active_document =\nitem.json.metadata?.filename ||\n\"unknown.pdf\";\n\n/* upload time */\nitem.json.uploaded_at =\nnew Date().toISOString();\n\nreturn [item];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2560,
+        -32
+      ],
+      "id": "da86087f-13ae-4f9f-af5e-b2be0be9b799",
+      "name": "Text Cleaner"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item=>{\n\nconst meta =\nitem.json.metadata?.metadata\n||\nitem.json.metadata\n||\n{};\n\nitem.json.metadata={\n\nfilename:\nmeta.filename,\n\nextension:\nmeta.extension,\n\ndocument_type:\nmeta.document_type,\n\npages:\nmeta.pages,\n\nocr:\nmeta.ocr,\n\nconfidence:\nmeta.confidence\n\n};\n\nreturn item;\n\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3296,
+        -288
+      ],
+      "id": "5f1b0137-2599-4728-bbc4-fb1ee1ed39c4",
+      "name": "Code in JavaScript4"
+    }
+  ],
+  "connections": {
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "OCR INPUT MERGE",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Preserve Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "for unknown",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "for unknown",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "for unknown",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "for unknown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "For Image": {
+      "main": [
+        []
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "PDF Text Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Ollama": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "OCR Cleaner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OCR Cleaner": {
+      "main": [
+        [
+          {
+            "node": "Metadata Builder1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Metadata Builder1": {
+      "main": [
+        [
+          {
+            "node": "Confidence Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LOW QUALITY OCR": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Confidence Check": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "LOW QUALITY OCR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Text Length Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Length Check": {
+      "main": [
+        [
+          {
+            "node": "OCR Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "OCR Final Output",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "OCR Final Output": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PDF Text Check": {
+      "main": [
+        [
+          {
+            "node": "PDF Router",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PDF Router": {
+      "main": [
+        [
+          {
+            "node": "OCR INPUT MERGE",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Metadata Builder - PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Metadata Builder - PDF": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OCR API": {
+      "main": [
+        [
+          {
+            "node": "Metadata Builder OCR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Metadata Builder OCR": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OCR INPUT MERGE": {
+      "main": [
+        [
+          {
+            "node": "OCR API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preserve Metadata": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Text Cleaner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Cleaner": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript4": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "{{INSTANCE_ID}}"
+  }
+}
